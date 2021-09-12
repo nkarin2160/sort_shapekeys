@@ -1,6 +1,7 @@
 bl_info = {
     "name": "Sort Shapekeys",
-    "author": "gogo",
+    "Original author": "gogo",
+    "Edited by": "nkarin",    
     "version": (1, 0, 1),
     "blender": (2, 83, 0),
     "description": "Sort shapekeys",
@@ -17,60 +18,69 @@ from bpy.props import (
     EnumProperty,
 )
 
-sort_FaceCap = [
-    "Basis",    # 一番上は必ずBasisにすること
-    "browInnerUp",
-    "browDown_L",
-    "browDown_R",
-    "browOuterUp_L",
-    "browOuterUp_R",
-    "eyeLookUp_L",
-    "eyeLookUp_R",
-    "eyeLookDown_L",
-    "eyeLookDown_R",
-    "eyeLookIn_L",
-    "eyeLookIn_R",
-    "eyeLookOut_L",
-    "eyeLookOut_R",
-    "eyeBlink_L",
-    "eyeBlink_R",
-    "eyeSquint_L",
-    "eyeSquint_R",
-    "eyeWide_L",
-    "eyeWide_R",
-    "cheekPuff",
-    "cheekSquint_L",
-    "cheekSquint_R",
-    "noseSneer_L",
-    "noseSneer_R",
-    "jawOpen",
+sort_LiveLink = [
+    "ベース",    # 一番上は必ずBasisにすること
+    "eyeBlinkLeft",
+    "eyeLookDownLeft",
+    "eyeLookInLeft",
+    "eyeLookOutLeft",
+    "eyeLookUpLeft",
+    "eyeSquintLeft",
+    "eyeWideLeft",
+    "eyeBlinkRight",
+    "eyeLookDownRight",
+    "eyeLookInRight",
+    "eyeLookOutRight",
+    "eyeLookUpRight",
+    "eyeSquintRight",
+    "eyeWideRight",
     "jawForward",
     "jawLeft",
     "jawRight",
+    "jawOpen",
+    "mouthClose",
     "mouthFunnel",
     "mouthPucker",
     "mouthLeft",
     "mouthRight",
-    "mouthRollUpper",
+    "mouthSmileLeft",
+    "mouthSmileRight",
+    "mouthFrownLeft",
+    "mouthFrownRight",
+    "mouthDimpleLeft",
+    "mouthDimpleRight",
+    "mouthStretchLeft",
+    "mouthStretchRight",
     "mouthRollLower",
-    "mouthShrugUpper",
+    "mouthRollUpper",
     "mouthShrugLower",
-    "mouthClose",
-    "mouthSmile_L",
-    "mouthSmile_R",
-    "mouthFrown_L",
-    "mouthFrown_R",
-    "mouthDimple_L",
-    "mouthDimple_R",
-    "mouthUpperUp_L",
-    "mouthUpperUp_R",
-    "mouthLowerDown_L",
-    "mouthLowerDown_R",
-    "mouthPress_L",
-    "mouthPress_R",
-    "mouthStretch_L",
-    "mouthStretch_R",
+    "mouthShrugUpper",
+    "mouthPressLeft",
+    "mouthPressRight",
+    "mouthLowerDownLeft",
+    "mouthLowerDownRight",
+    "mouthUpperUpLeft",
+    "mouthUpperUpRight",
+    "browDownLeft",
+    "browDownRight",
+    "browInnerUp",
+    "browOuterUpLeft",
+    "browOuterUpRight",
+    "cheekPuff",
+    "cheekSquintLeft",
+    "cheekSquintRight",
+    "noseSneerLeft",
+    "noseSneerRight",
     "tongueOut",
+    "headYaw",
+    "headPitch",
+    "headRoll",
+    "leftEyeYaw",
+    "leftEyePitch",
+    "leftEyeRoll",
+    "rightEyeYaw",
+    "rightEyePitch",
+    "rightEyeRoll",
 ]
 
 sort_iFacialMocap = [
@@ -129,8 +139,6 @@ sort_iFacialMocap = [
     "tongueOut",
 ]
 
-
-
 def check_list(target_object, sort_list):
     missing_list = []
     for shapekey_name in sort_list:
@@ -167,8 +175,8 @@ class SRTSPK_OT_check(bpy.types.Operator):
     def execute(self, context):
         props = context.scene.srtspk
         target_object = context.object
-        if props.sort_type == "FaceCap":
-            sort_list = sort_FaceCap
+        if props.sort_type == "LiveLink":
+            sort_list = sort_LiveLink
         else:
             sort_list = sort_iFacialMocap
 
@@ -191,8 +199,8 @@ class SRTSPK_OT_create_missings(bpy.types.Operator):
     def execute(self, context):
         props = context.scene.srtspk
         target_object = context.object
-        if props.sort_type == "FaceCap":
-            sort_list = sort_FaceCap
+        if props.sort_type == "LiveLink":
+            sort_list = sort_LiveLink
         else:
             sort_list = sort_iFacialMocap
 
@@ -217,8 +225,8 @@ class SRTSPK_OT_sort(bpy.types.Operator):
     def execute(self, context):
         props = context.scene.srtspk
         target_object = context.object
-        if props.sort_type == "FaceCap":
-            sort_list = sort_FaceCap
+        if props.sort_type == "LiveLink":
+            sort_list = sort_LiveLink
         else:
             sort_list = sort_iFacialMocap
         
@@ -256,7 +264,7 @@ class SRTSPK_PT_main(bpy.types.Panel):
 
 class SRTSPK_props(bpy.types.PropertyGroup):
     sort_type_input = (
-        ("FaceCap", "FaceCap", ""),      # (識別子, UI表示名, 説明文)
+        ("LiveLink", "LiveLink", ""),      # (識別子, UI表示名, 説明文)
         ("iFacialMocap", "iFacialMocap", ""),
     )
     sort_type: EnumProperty(
