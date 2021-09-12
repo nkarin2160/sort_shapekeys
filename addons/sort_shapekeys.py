@@ -84,7 +84,7 @@ sort_LiveLink = [
 ]
 
 sort_iFacialMocap = [
-    "Basis",    # 一番上は必ずBasisにすること
+    "ベース",    # 一番上は必ずBasisにすること
     "browInnerUp",
     "browDownLeft",
     "browDownRight",
