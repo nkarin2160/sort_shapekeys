@@ -9,7 +9,7 @@
 
 
 # Blender Add-on: Sort Shapekeys
-FaceCap用にBlender上でシェイプキーを並べ替えるスクリプトです。[DLはこちら](https://github.com/nkarin/sort_shapekeys/releases/download/v1.0/sort_shapekeys.zip)    
+FaceCap用にBlender上でシェイプキーを並べ替えるスクリプトです。[DLはこちら](https://github.com/nkarin2160/sort_shapekeys/releases/download/v1.0/sort_shapekeys.zip)    
 <br>
 ![アドオン画像](./doc/sort_shapekeys_00.jpg)
 
