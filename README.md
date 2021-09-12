@@ -3,13 +3,13 @@
 1.authorの追記と修正  
 "Original author": "gogo",  
 "Edited by": "nkarin",    
-2.ソートスロット名称、「FaceCap」を「LiveLink」に変更、及びその名称を利用するメソッドの名称もすべて置き換え。 
+2.ソートスロット名称、「FaceCap」を「LiveLink」に変更、及びその名称を利用するメソッドの名称もすべて置き換え。   
 3.ソート名称をLiveLinkでそのまま使用できる名称に変更　※出典「https://jumpjun.net/bue4vtuber1/#toc7」  
 4.「Basis」を「ベース」に変更  
 
 
 # Blender Add-on: Sort Shapekeys
-FaceCap用にBlender上でシェイプキーを並べ替えるスクリプトです。[DLはこちら](https://github.com/3str6/sort_shapekeys/releases/download/v1.0/sort_shapekeys.zip)    
+FaceCap用にBlender上でシェイプキーを並べ替えるスクリプトです。[DLはこちら](https://github.com/nkarin/sort_shapekeys/releases/download/v1.0/sort_shapekeys.zip)    
 <br>
 ![アドオン画像](./doc/sort_shapekeys_00.jpg)
 
